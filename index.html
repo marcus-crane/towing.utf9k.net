@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Car Removals | utf9k</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .explainer {
+        text-size-adjust: 100%;
+        box-sizing: border-box;
+        font: 12px / 18px Helvetica, Arial, sans-serif;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 344px;
+        background: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 24px;
+        padding: 10px 24px;
+        max-height: 96%;
+        overflow: hidden overlay;
+        outline: none;
+        z-index: 1;
+      }
+
+      @media screen and (max-width: 900px) {
+        .explainer {
+          visibility: hidden;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="explainer">
+      <h2>Vehicles towed in Auckland, NZ</h2>
+      <div>
+        <p>This is a visualisation of vehicles that were towed between August 2016 to July 2019.</p>
+        <p><strong>Click and drag</strong> to move around</p>
+        <p>Hold <strong>Shift</strong> while dragging to change view angle.</p>
+        <p>Resources used:</p>
+        <ul>
+          <li><a href="https://fyi.org.nz/request/11018-request-of-towing-data-for-three-tamaki-makaurau-police-districts#incoming-39588">Towing data sourced from NZ Police via OIA</a></li>
+          <li><a href="https://data.linz.govt.nz/layer/53353-nz-street-address/">NZ Street Address (LDS)</li>
+          <li><a href="https://openrouteservice.org/">Openrouteservice</a></li>
+          <li><a href="http://download.geofabrik.de/australia-oceania/new-zealand.html">Geofabrik OSM extract for New Zealand</a></li>
+        </ul>
+        <p>Feel free to check out the <a href="">map source code</a> or <a href="https://github.com/marcus-crane/datasets/tree/main/auckland-towing">the scripts used</a> to cleanse and generate routing data.</p>
+      </div>
+      <a href="#" onclick="document.querySelector('.explainer').style.visibility = 'hidden'">[ Hide this window ]</a>
+    </div>
+    <div id="app"></div>
+  </body>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript">
+    App.renderToDOM(document.getElementById("app"));
+  </script>
+</html>
