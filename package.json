@@ -5,7 +5,7 @@
     "scripts": {
         "start-local": "webpack-dev-server --env.local --progress --hot --open",
         "start": "webpack-dev-server --progress --hot --open",
-        "build": "yarn run webpack && cp index.html dist/index.html && cp routes.json dist/routes.json"
+        "build": "yarn run webpack && cp index.html dist/index.html"
     },
     "dependencies": {
         "deck.gl": "^8.8.0",
