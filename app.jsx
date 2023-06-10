@@ -62,7 +62,7 @@ const landCover = [
 
 export default function App({
   trips = DATA_URL.TRIPS,
-  trailLength = 250,
+  trailLength = 500,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
