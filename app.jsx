@@ -67,7 +67,7 @@ export default function App({
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 231800, // unit corresponds to the timestamp in source data
-  animationSpeed = 15,
+  animationSpeed = 30,
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -97,8 +97,8 @@ export default function App({
       getPath: (d) => d.path,
       getTimestamps: (d) => d.timestamps,
       getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.3,
-      widthMinPixels: 2,
+      opacity: 0.4,
+      widthMinPixels: 3,
       rounded: true,
       trailLength,
       currentTime: time,
