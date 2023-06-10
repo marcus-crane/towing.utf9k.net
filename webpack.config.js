@@ -1,4 +1,4 @@
-const CONFIG = {
+module.exports = {
     mode: 'development',
     entry: {
         app: './app.js',
@@ -9,15 +9,14 @@ const CONFIG = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                loader: 'babel-loader',
+                test: /\.[jt]sx?$/,
+                loader: 'esbuild-loader',
                 exclude: [/node_modules/],
                 options: {
+                    target: 'es2015',
                     presets: ['@babel/preset-react']
                 }
             }
         ]
     }
 }
-
-module.exports = CONFIG
