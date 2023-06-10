@@ -9,7 +9,7 @@ import {TripsLayer} from '@deck.gl/geo-layers';
 
 // Source data CSV
 const DATA_URL = {
-  TRIPS: '/routes.json' // eslint-disable-line
+  TRIPS: 'https://raw.githubusercontent.com/marcus-crane/towing.utf9k.net/main/routes.json' // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
