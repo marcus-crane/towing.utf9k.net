@@ -1,6 +1,6 @@
 /* global window */
 import React, { useState, useEffect } from "react";
-import { Map } from "react-map-gl";
+import { StaticMap } from "react-map-gl";
 import { AmbientLight, PointLight, LightingEffect } from "@deck.gl/core";
 import DeckGL from "@deck.gl/react";
 import { PolygonLayer } from "@deck.gl/layers";
@@ -113,7 +113,7 @@ export default function App({
       initialViewState={initialViewState}
       controller={true}
     >
-      <Map
+      <StaticMap
         reuseMaps
         mapStyle={mapStyle}
         preventStyleDiffing={true}
