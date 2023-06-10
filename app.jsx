@@ -66,7 +66,7 @@ export default function App({
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 30000, // unit corresponds to the timestamp in source data
+  loopLength = 231800, // unit corresponds to the timestamp in source data
   animationSpeed = 15,
 }) {
   const [time, setTime] = useState(0);
