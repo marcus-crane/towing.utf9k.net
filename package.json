@@ -4,7 +4,8 @@
     "license": "MIT",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && cp index.html dist/index.html && cp routes.json dist/routes.json"
+        "build": "vite build",
+        "preview": "vite preview"
     },
     "dependencies": {
         "deck.gl": "^8.8.0",
