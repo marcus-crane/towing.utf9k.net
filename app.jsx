@@ -1,15 +1,15 @@
 /* global window */
 import React, { useState, useEffect } from "react";
-import { StaticMap } from "react-map-gl";
+import { Map } from "react-map-gl";
+import maplibregl from 'maplibre-gl';
 import { AmbientLight, PointLight, LightingEffect } from "@deck.gl/core";
 import DeckGL from "@deck.gl/react";
-import { PolygonLayer } from "@deck.gl/layers";
 import { TripsLayer } from "@deck.gl/geo-layers";
 
 // Source data CSV
 const DATA_URL = {
   TRIPS:
-    "https://raw.githubusercontent.com/marcus-crane/towing.utf9k.net/main/routes.json", // eslint-disable-line
+    "/routes.json", // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -20,7 +20,7 @@ const ambientLight = new AmbientLight({
 const pointLight = new PointLight({
   color: [255, 255, 255],
   intensity: 2.0,
-  position: [174.76, -36.84, 8000],
+  position: [174.76, -36.8, 8000],
 });
 
 const lightingEffect = new LightingEffect({ ambientLight, pointLight });
@@ -33,9 +33,6 @@ const material = {
 };
 
 const DEFAULT_THEME = {
-  buildingColor: [74, 80, 87],
-  trailColor0: [253, 128, 93],
-  trailColor1: [23, 184, 190],
   material,
   effects: [lightingEffect],
 };
@@ -49,24 +46,16 @@ const INITIAL_VIEW_STATE = {
 };
 
 const MAP_STYLE =
-  "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json";
+  "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
 
-const landCover = [
-  [
-    [174.7, -36.8],
-    [174.7, -36.82],
-    [174.76, -36.82],
-    [174.76, -36.8],
-  ],
-];
 
 export default function App({
   trips = DATA_URL.TRIPS,
-  trailLength = 250,
+  trailLength = 500,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 30000, // unit corresponds to the timestamp in source data
+  loopLength = 231800, // unit corresponds to the timestamp in source data
   animationSpeed = 15,
 }) {
   const [time, setTime] = useState(0);
@@ -83,26 +72,17 @@ export default function App({
   }, [animation]);
 
   const layers = [
-    // This is only needed when using shadow effects
-    new PolygonLayer({
-      id: "ground",
-      data: landCover,
-      getPolygon: (f) => f,
-      stroked: false,
-      getFillColor: [0, 0, 0, 0],
-    }),
     new TripsLayer({
       id: "trips",
       data: trips,
       getPath: (d) => d.path,
       getTimestamps: (d) => d.timestamps,
-      getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.3,
+      getColor: [253, 128, 93],
+      opacity: 0.4,
       widthMinPixels: 2,
       rounded: true,
       trailLength,
       currentTime: time,
-      shadowEnabled: false,
     }),
   ];
 
@@ -113,8 +93,9 @@ export default function App({
       initialViewState={initialViewState}
       controller={true}
     >
-      <StaticMap
+      <Map
         reuseMaps
+        mapLib={maplibregl}
         mapStyle={mapStyle}
         preventStyleDiffing={true}
       />
