@@ -20,7 +20,7 @@ const ambientLight = new AmbientLight({
 const pointLight = new PointLight({
   color: [255, 255, 255],
   intensity: 2.0,
-  position: [174.76, -36.84, 8000],
+  position: [174.76, -36.8, 8000],
 });
 
 const lightingEffect = new LightingEffect({ ambientLight, pointLight });
@@ -62,12 +62,12 @@ const landCover = [
 
 export default function App({
   trips = DATA_URL.TRIPS,
-  trailLength = 500,
+  trailLength = 180,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 231800, // unit corresponds to the timestamp in source data
-  animationSpeed = 30,
+  animationSpeed = 10,
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState({});
@@ -97,8 +97,8 @@ export default function App({
       getPath: (d) => d.path,
       getTimestamps: (d) => d.timestamps,
       getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.4,
-      widthMinPixels: 3,
+      opacity: 0.3,
+      widthMinPixels: 2,
       rounded: true,
       trailLength,
       currentTime: time,
